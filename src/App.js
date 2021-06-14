@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import Robotscardcomponent from './components/robotsCardComponent';
+import {Robots} from './robots';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Robotscardcomponent robot={Robots[0]}/>
+      <Robotscardcomponent robot={Robots[1]}/>
+      <Robotscardcomponent robot={Robots[2]}/>
+      <Robotscardcomponent robot={Robots[3]}/>
+      <Robotscardcomponent robot={Robots[4]}/>
+      <Robotscardcomponent robot={Robots[5]}/>
+      <Robotscardcomponent robot={Robots[6]}/>
+      <Robotscardcomponent robot={Robots[7]}/>
     </div>
   );
 }
