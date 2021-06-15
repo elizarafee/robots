@@ -1,4 +1,5 @@
 import Maincomponent from './components/mainComponent';
+
 import 'tachyons';
 
 function App() {

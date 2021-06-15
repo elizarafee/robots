@@ -1,6 +1,5 @@
 import Robotslistcomponent from "./robotsListComponent";
 import Robotssearchboxcomponent from "./robotsSearchBoxComponent";
-import Robots from "../robots";
 import React, { Component } from "react";
 import "tachyons";
 
@@ -8,7 +7,7 @@ class Maincomponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      robots: Robots,
+      robots: [],
       searchField: "",
     };
   }
@@ -16,6 +15,16 @@ class Maincomponent extends Component {
   onSearchFieldChange = (event) => {
     this.setState({ searchField: event.target.value });
   };
+
+  componentDidMount(){
+      fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => {
+          return response.json();
+      })
+      .then(users => {
+          this.setState({robots: users})
+      })
+  }
 
   render() {
     const searchedRobots = this.state.robots.filter((robot) => {
