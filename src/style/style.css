@@ -1,0 +1,4 @@
+.moving-left:hover
+{
+  transform: rotate(10deg) scale(.8);
+}
