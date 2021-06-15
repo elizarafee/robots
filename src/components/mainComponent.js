@@ -12,10 +12,6 @@ class Maincomponent extends Component {
     };
   }
 
-  onSearchFieldChange = (event) => {
-    this.setState({ searchField: event.target.value });
-  };
-
   componentDidMount(){
       fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => {
@@ -26,23 +22,32 @@ class Maincomponent extends Component {
       })
   }
 
+  onSearchFieldChange = (event) => {
+    this.setState({ searchField: event.target.value });
+  };
+
   render() {
     const searchedRobots = this.state.robots.filter((robot) => {
       return robot.name
         .toLowerCase()
         .includes(this.state.searchField.toLowerCase());
     });
-    return (
-      <>
-        <div className="tc">
-          <h1>Robotic Friends</h1>
-            <Robotssearchboxcomponent
-              searchFieldChange={this.onSearchFieldChange}
-            />
-          <Robotslistcomponent robots={searchedRobots} />
-        </div>
-      </>
-    );
+    if(!this.state.robots.length){
+        return <h1>Loading</h1>
+    }
+    else {
+        return (
+            <>
+              <div className="tc">
+                <h1>Robotic Friends</h1>
+                  <Robotssearchboxcomponent
+                    searchFieldChange={this.onSearchFieldChange}
+                  />
+                <Robotslistcomponent robots={searchedRobots} />
+              </div>
+            </>
+          );
+    }
   }
 }
 
