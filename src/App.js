@@ -1,10 +1,10 @@
-import Robotslistcomponent from './components/robotsListComponent';
-import {Robots} from './robots';
+import Maincomponent from './components/mainComponent';
+import 'tachyons';
 
 function App() {
   return (
     <div className="App">
-      <Robotslistcomponent robots={Robots} /> 
+      <Maincomponent />
     </div>
   );
 }

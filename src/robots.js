@@ -1,4 +1,4 @@
-export const Robots = [
+const Robots = [
     {
         'id': 1,
         'name': 'AAA',
@@ -38,5 +38,12 @@ export const Robots = [
         'id': 8,
         'name': 'HHH',
         'email': 'hhh@gmail.com'
-    }
+    },
+    {
+        'id': 9,
+        'name': 'ABC',
+        'email': 'abc@gmail.com'
+    },
 ]
+
+export default Robots;
