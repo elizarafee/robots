@@ -1,6 +1,7 @@
 import Robotslistcomponent from "./robotsListComponent";
 import Robotssearchboxcomponent from "./robotsSearchBoxComponent";
 import React, { Component } from "react";
+import Scrollcomponent from './scrollComponent';
 import "tachyons";
 
 class Maincomponent extends Component {
@@ -12,14 +13,14 @@ class Maincomponent extends Component {
     };
   }
 
-  componentDidMount(){
-      fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => {
-          return response.json();
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => {
+        return response.json();
       })
-      .then(users => {
-          this.setState({robots: users})
-      })
+      .then((users) => {
+        this.setState({ robots: users });
+      });
   }
 
   onSearchFieldChange = (event) => {
@@ -32,21 +33,22 @@ class Maincomponent extends Component {
         .toLowerCase()
         .includes(this.state.searchField.toLowerCase());
     });
-    if(!this.state.robots.length){
-        return <h1>Loading</h1>
-    }
-    else {
-        return (
-            <>
-              <div className="tc">
-                <h1>Robotic Friends</h1>
-                  <Robotssearchboxcomponent
-                    searchFieldChange={this.onSearchFieldChange}
-                  />
-                <Robotslistcomponent robots={searchedRobots} />
-              </div>
-            </>
-          );
+    if (!this.state.robots.length) {
+      return <h1>Loading</h1>;
+    } else {
+      return (
+        <>
+          <div className="tc">
+            <h1>Robotic Friends</h1>
+            <Robotssearchboxcomponent
+              searchFieldChange={this.onSearchFieldChange}
+            />
+            <Scrollcomponent>
+              <Robotslistcomponent robots={searchedRobots} />
+            </Scrollcomponent>
+          </div>
+        </>
+      );
     }
   }
 }
